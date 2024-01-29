@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 import openai
-import os
-import requests
-import configparser
 
 app = Flask(__name__)
 
