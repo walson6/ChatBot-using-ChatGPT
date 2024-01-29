@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            display: none;
+            color: #888;
+            font-style: italic;
+        }
+
+        .response {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <form action="/ask" method="post" onsubmit="showLoading()">
+        <label for="user_input">Ask a question:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Submit</button>
+        <p class="loading" id="loadingMessage">Loading...</p>
+    </form>
+    {% if user_input %}
+        <p>User: {{ user_input }}</p>
+        <p class="response" id="botResponse">Bot: {{ bot_response }}</p>
+    {% endif %}
+
+    <script>
+        function showLoading() {
+            document.getElementById('loadingMessage').style.display = 'block';
+            document.getElementById('botResponse').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
